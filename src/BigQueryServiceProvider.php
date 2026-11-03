@@ -40,7 +40,7 @@ class BigQueryServiceProvider extends ServiceProvider
         $this->app->alias(BigQueryClient::class, 'bigquery');
     }
 
-    protected function guardAgainstInvalidConfiguration(array $bigQueryConfig = null)
+    protected function guardAgainstInvalidConfiguration(?array $bigQueryConfig = null)
     {
         if (! file_exists($bigQueryConfig['application_credentials']) && ! array_key_exists('keyFile', $bigQueryConfig)) {
             throw InvalidConfiguration::credentialsJsonDoesNotExist($bigQueryConfig['application_credentials']);
